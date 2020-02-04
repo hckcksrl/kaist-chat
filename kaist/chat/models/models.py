@@ -1,4 +1,5 @@
 from django.db import models
+from kaist.chat.entities.entity import MenuEntity
 
 
 class DAY(models.Model):
@@ -12,12 +13,28 @@ class FCLT(models.Model):
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
 
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
+
 
 class WEST(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True)
     time = models.CharField(null=True, max_length=255, default='')
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
+
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
 
 
 class EAST1(models.Model):
@@ -26,12 +43,28 @@ class EAST1(models.Model):
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
 
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
+
 
 class EAST2(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True)
     time = models.CharField(null=True, max_length=255, default='')
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
+
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
 
 
 class EMP(models.Model):
@@ -40,6 +73,14 @@ class EMP(models.Model):
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
 
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
+
 
 class ICC(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True)
@@ -47,9 +88,25 @@ class ICC(models.Model):
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
 
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
+
 
 class HAWAM(models.Model):
     id = models.AutoField(auto_created=True, primary_key=True)
     time = models.CharField(null=True, max_length=255, default='')
     menu = models.TextField(null=True, default='')
     day = models.ForeignKey('DAY', on_delete=models.CASCADE)
+
+    def to_entity(self) -> MenuEntity:
+        return MenuEntity(
+            id=self.id,
+            time=self.time,
+            menu=self.menu,
+            day=self.day
+        )
