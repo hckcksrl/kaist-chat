@@ -17,7 +17,7 @@ class MenuInteractor:
         }
 
     def location_func(self, location: str, day: str):
-        if location == '학부식당':
+        if location == '카이마루':
             return self.repository.get_fclt_menu(day=day)
 
         if location == '서맛골':
@@ -48,7 +48,7 @@ class GetMenuInteracor(MenuInteractor):
 
         if day in day_list:
             menus = self.location_func(location=location, day=day)
-
+        
             for menu in menus:
 
                 if menu.menu:
@@ -59,9 +59,8 @@ class GetMenuInteracor(MenuInteractor):
         today_id = datetime.datetime.today().weekday()
         today = day_list[today_id]
         menus = self.location_func(location=location, day=today)
-
+    
         for menu in menus:
             result['data']['menu'] = result['data']['menu'] + f'{menu.time}\n{menu.menu}\n\n'
-
         return result
 

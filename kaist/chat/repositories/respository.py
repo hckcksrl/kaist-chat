@@ -56,7 +56,7 @@ class MenuRepository(MenuEntity):
     def get_east1_menu(self, day: str) -> List[MenuEntity]:
         day = DAY.objects.get(day=day)
         menus = EAST1.objects.filter(day=day.id)
-        menu_entities = [menu.to_entity for menu in menus]
+        menu_entities = [menu.to_entity() for menu in menus]
 
         return menu_entities
 
