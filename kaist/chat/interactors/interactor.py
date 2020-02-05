@@ -44,7 +44,7 @@ class GetMenuInteracor(MenuInteractor):
         result = self.result
         day = data['userRequest']['utterance']
         location = data['userRequest']['block']['name']
-        result['data']['location'] = location
+        result['data']['location'] = '▶'+location
 
         if day in day_list:
             menus = self.location_func(location=location, day=day)
@@ -52,7 +52,7 @@ class GetMenuInteracor(MenuInteractor):
             for menu in menus:
 
                 if menu.menu:
-                    result['data']['menu'] = result['data']['menu'] + f'{menu.time}\n{menu.menu}\n\n'
+                    result['data']['menu'] = result['data']['menu'] + f'▶{menu.time}\n{menu.menu}\n\n'
 
             return result
 
@@ -61,6 +61,6 @@ class GetMenuInteracor(MenuInteractor):
         menus = self.location_func(location=location, day=today)
     
         for menu in menus:
-            result['data']['menu'] = result['data']['menu'] + f'{menu.time}\n{menu.menu}\n\n'
+            result['data']['menu'] = result['data']['menu'] + f'▶{menu.time}\n{menu.menu}\n\n'
         return result
 
